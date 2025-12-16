@@ -1,0 +1,549 @@
+/* --- Global Styles: Centering Everything --- */
+body {
+    background-color: #fce4ec; /* Lightest Pink */
+    font-family: 'Jost', sans-serif;
+    color: #333;
+    /* Use Flexbox to center the main content area */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    min-height: 100vh; /* Full viewport height */
+    margin: 0;
+    padding: 20px 0; /* Add vertical padding */
+    overflow-x: hidden; /* Prevent horizontal scroll on mobile */
+    box-sizing: border-box; /* Include padding in element's total width */
+}
+
+/* Ensure the main content container is not wider than the viewport */
+#main-content {
+    width: 100%; 
+    max-width: 600px; /* Maximum width for desktop screens */
+}
+
+/* --- Card Styling: Consistent and Centered --- */
+ .card, .popup-overlay .popup-content {
+    background-color: white;
+    padding: 30px 20px; /* Adjusted padding for better mobile fit */
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    max-width: 90%; /* Scale down on smaller screens */
+    width: 90%; 
+    margin: 20px auto; /* Auto margins help center it within #main-content */
+    text-align: center;
+    box-sizing: border-box;
+}
+input#user-name-input {
+    box-shadow: 0 5px 15px rgb(224 2 113 / 50%);
+    border: none;
+    padding: 11px 12px;
+    border-radius: 10px;
+}
+img.corner-doodleone {
+    width: 214px;
+}
+.popup {
+    background-color: white;
+    padding: 37px 23px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
+    max-width: 30%;
+    width: 90%;
+    margin: 20px auto;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    color: #ff69b4; /* Hot Pink */
+}
+
+/* --- Buttons --- */
+.main-btn, .secondary-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.main-btn {
+    background-color: #ff69b4;
+    color: white;
+}
+
+.main-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+}
+
+/* --- Pop-up Centering --- */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* --- Doodle Animation (Stays Fixed) --- */
+.doodle {
+    position: fixed; /* Ensures doodles stay relative to the viewport */
+    width: 120px;
+    z-index: -1; 
+    animation: floatAndMove 20s infinite alternate ease-in-out;
+}
+
+.doodle-top-left { top: 5%; left: 5%; }
+.doodle-bottom-right { bottom: 5%; right: 5%; animation-delay: 5s; }
+
+@keyframes floatAndMove {
+    0% { transform: translate(0px, 0px) rotate(0deg); }
+    50% { transform: translate(50px, -50px) rotate(10deg); }
+    100% { transform: translate(-50px, 50px) rotate(-10deg); }
+}
+
+/* =======================================================
+   NEW STYLES FOR FLOATING GIFS, INLINE GIFS & KISS UNLOCK 
+   ======================================================= */
+
+/* 1. Floating GIFs Container */
+.floating-gifs-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* So you can click buttons behind them */
+    z-index: -2; /* Behind everything */
+    overflow: hidden;
+}
+
+.float-gif {
+    position: absolute;
+    width: 60px; /* Adjust size of floating gifs */
+    opacity: 0.8;
+    animation: randomFloat 15s infinite linear;
+}
+
+/* Random Positions for the 10 gifs */
+.g1 {
+    top: 70%;
+    left: 10%;
+    width: 173px;
+    animation-duration: 17s;
+}
+.g2 {
+    top: 40%;
+    right:35%;
+    width: 157px;
+    animation-duration: 18s;
+}
+.g3 {
+    top: 10%;
+    right: 10%;
+    width:100px;
+    animation-duration: 14s;
+}
+.g4 { bottom: 30%; right: 10%; animation-duration: 16s; }
+.g5 { top: 50%; left: 5%; animation-duration: 20s; }
+.g6 { top: 5%; left: 50%; animation-duration: 13s; }
+.g7 { bottom: 5%; right: 40%; animation-duration: 17s; }
+.g8 { top: 35%; right: 30%; animation-duration: 15s; }
+.g9 { bottom: 50%; left: 80%; animation-duration: 19s; }
+.g10 { top: 80%; left: 40%; animation-duration: 14s; }
+
+@keyframes randomFloat {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    33% { transform: translate(30px, -50px) rotate(10deg); }
+    66% { transform: translate(-20px, 40px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+/* 2. Inline GIFs inside Letter */
+.inline-letter-gif {
+    width: 40px;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 5px;
+    animation: bounceTiny 2s infinite;
+}
+
+@keyframes bounceTiny {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+
+/* 3. Kiss / Heart Unlock Overlay */
+#falling-heart-container {
+    text-align: center;
+    cursor: pointer;
+    animation: dropIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+.inline-letter-gif1 {
+    width: 103px;
+    height: auto;
+    vertical-align: middle;
+    display: inline-block;
+    margin: 0 5px;
+    animation: bounceTiny 10s infinite;
+}
+.big-heart {
+    font-size: 80px;
+    animation: pulseHeart 1s infinite;
+}
+
+.tap-unlock-text {
+    font-size: 20px;
+    font-weight: bold;
+    color: #d63384;
+    margin-top: -10px;
+    background: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+@keyframes dropIn {
+    0% { transform: translateY(-500px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes pulseHeart {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+
+/* --- Love Letter Sections (Envelope Design) --- */
+
+/* Parent container for spacing */
+.envelope-container { 
+    margin-top: 20px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Base envelope wrapper */
+.envelope {
+    width: 280px; /* Slightly wider for better appearance */
+    height: 200px; 
+    margin: 20px auto;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(255, 105, 180, 0.4);
+    transition: all 0.5s ease-in-out;
+    border-radius: 10px;
+    z-index: 50; /* Ensure it's above other things */
+}
+
+/* Envelope body (The main pink rectangle) */
+.envelope-body {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffc0cb; /* Light Pink */
+    border-radius: 10px;
+}
+
+/* Envelope Flap (The darker pink triangle on top) */
+.envelope-flap {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Creates a top triangle shape */
+    clip-path: polygon(0 0, 100% 0, 50% 50%); 
+    background-color: #ff69b4; /* Hot Pink */
+    border-radius: 10px;
+    transition: transform 0.5s ease;
+    transform-origin: top; /* Important for rotation */
+    z-index: 10;
+}
+
+/* Envelope Seal (The inner light pink V-shape visible when sealed) */
+.envelope-seal {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* Creates a V-shape from the top */
+    clip-path: polygon(0 50%, 50% 75%, 100% 50%, 100% 100%, 0 100%);
+    background-color: #f7b7cf; /* Slightly lighter pink */
+    border-radius: 10px;
+    z-index: 20;
+}
+
+/* The Heart/Seal Icon (The small heart on the flap) */
+.envelope-seal::before {
+    content: '♥'; /* Unicode heart */
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 20px;
+    z-index: 30;
+}
+
+/* Small hearts at the corners of the flap (as seen in the video) */
+.envelope-flap::before, .envelope-flap::after {
+    content: '♥';
+    position: absolute;
+    color: #ff69b4;
+    font-size: 10px;
+    z-index: 40;
+}
+.envelope-flap::before { top: 3px; left: 3px; }
+.envelope-flap::after { top: 3px; right: 3px; }
+
+
+/* Text overlay (Click instructions and Special Delivery) */
+.envelope-text-overlay {
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #555;
+    font-size: 14px;
+    z-index: 50;
+    transition: opacity 0.3s;
+}
+
+/* Special Delivery Stamp styling (inside the overlay) */
+.special-delivery {
+    display: block;
+    margin-top: 5px;
+    color: white; 
+    background-color: #ff69b4; 
+    padding: 3px 8px; 
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Letter Opening Animation --- */
+
+/* When the envelope is clicked, we rotate the flap up to reveal the content */
+.envelope.opened .envelope-flap {
+    transform: rotateX(180deg); /* Flips the flap open */
+}
+
+/* When the envelope is opened, hide the seal and the text overlay */
+.envelope.opened .envelope-seal,
+.envelope.opened .envelope-text-overlay {
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+/* Letter Content (The actual letter revealed) */
+.letter-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1.0s ease-in-out, opacity 1.0s ease;
+    text-align: left;
+    background-color: #fffafc;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; /* Take full width of the card */
+    box-sizing: border-box;
+}
+
+/* Letter content visible when JS adds the 'open' class */
+.letter-content.open {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 20px;
+}
+.letter-content p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+#love-letter-text button {
+    display: none;
+    margin-top: 20px;
+}
+
+/* Special Delivery Stamp */
+.special-delivery {
+    color: white; 
+    background-color: #ff69b4; 
+    padding: 5px 10px; 
+    border-radius: 5px;
+    position: absolute; /* Position relative to the envelope */
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%); /* Center the stamp */
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Letter Content (Animation for reveal) */
+.letter-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 1.0s ease-in-out, opacity 1.0s ease; /* Smoother transition */
+    text-align: left;
+    background-color: #fffafc; /* Slightly off-white for paper look */
+    padding: 20px;
+    border-radius: 10px;
+    width: 90%;
+    box-sizing: border-box;
+}
+.letter-content.open {
+    max-height: 500px; /* Needs to be larger than the content height */
+    opacity: 1;
+    margin-top: 20px;
+}
+
+/* Hide the button initially inside the letter */
+#love-letter-text button {
+    display: none;
+    margin-top: 20px;
+}
+
+/* When the letter is open, make sure the text flows nicely */
+.letter-content p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+.letter-content.open {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 20px;
+}
+.special-delivery {
+    color: white; 
+    background-color: #ff69b4; 
+    padding: 5px 10px; 
+    border-radius: 5px;
+}
+.signature {
+    font-style: italic;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ff69b4;
+    text-align: center;
+}
+/* --- Playlist Responsiveness --- */
+#playlist-section { background-color: #fff7fb; }
+.track-container {
+    display: flex;
+    justify-content: center; /* Center tracks within the container */
+    flex-wrap: wrap; /* Allow wrapping */
+    margin: 20px 0;
+    gap: 15px; /* Space between tracks */
+}
+.track {
+    width: 150px; /* Fixed size for consistency */
+    margin: 0; /* Remove extra margin */
+    text-align: center;
+}
+.track-art {
+    width: 100%;
+    height: 150px; 
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.play-btn {
+    background: #ffc0cb; 
+    padding: 8px 15px;
+    border-radius: 50%;
+}
+
+/* --- Card Flip Animation Responsiveness --- */
+.cards-grid {
+    display: flex;
+    justify-content: center; /* Center the grid items */
+    gap: 20px; 
+    flex-wrap: nowrap;
+    margin: 20px 0;
+    perspective: 1000px; 
+    padding: 0 5px; 
+}
+
+.flip-card {
+    width: 30%; /* Take up a third of the grid width */
+    height: 160px; 
+    min-width: 100px; /* Prevent cards from getting too small */
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; 
+    backface-visibility: hidden;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.flip-card-back {
+    background-color: #ffb6c1; 
+    color: white;
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+/* --- Media Query for Mobile Optimization (Small Screens) --- */
+@media (max-width: 500px) {
+    /* Stack the playlist tracks vertically on very small screens for better tapping */
+    .track-container {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .track {
+        width: 70%; /* Make tracks wider when stacked */
+        max-width: 200px;
+        margin: 15px 0;
+    }
+    
+    /* Keep cards in a row but allow them to shrink slightly more */
+    .flip-card {
+        height: 140px;
+        min-width: 90px;
+    }
+    .cards-grid {
+        gap: 5px;
+    }
+}

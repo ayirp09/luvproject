@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specially For You! ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="floating-gifs-container">
+        <img src="assets/i-love-you-iloveyou.gif" class="float-gif g1" alt="">
+        <img src="assets/download.png" class="float-gif g3" alt="">
+        <!-- <img src="assets/pengu-pudgy.gif" class="float-gif g2" alt=""> -->
+        <!-- <img src="assets/cute3.gif" class="float-gif g3" alt="">
+        <img src="assets/cute4.gif" class="float-gif g4" alt="">
+        <img src="assets/cute5.gif" class="float-gif g5" alt="">
+        <img src="assets/cute6.gif" class="float-gif g6" alt="">
+        <img src="assets/cute7.gif" class="float-gif g7" alt="">
+        <img src="assets/cute8.gif" class="float-gif g8" alt="">
+        <img src="assets/cute9.gif" class="float-gif g9" alt="">
+        <img src="assets/cute10.gif" class="float-gif g10" alt=""> -->
+    </div>
+
+    <img src="assets/download.png" alt="Cute Cat" class="doodle doodle-top-left">
+    <img src="assets/Cute teddy bear with a gift.gif" alt="Cute Teddy" class="doodle doodle-bottom-right">
+
+    <div id="name-popup" class="popup">
+        <div class="popup-content">
+             <img src="assets/pengu-pudgy.gif" class="float-gif g2" alt="">
+            <h2>Somthing special❤️😅</h2>
+            <input type="text" id="user-name-input" placeholder=" Hnjii apna naam likhdo ✍🏻">
+            <button class="main-btn" onclick="saveNameAndStart()">Enter</button>
+        </div>
+    </div>
+    
+    <div id="main-content" style="display: none;">
+
+        <section id="initial-letter-section" class="card">
+            <img src="assets/intro-DzUiguR4.webp" alt="Hello Kitty" class="corner-doodleone">
+            <h1 id="greeting">Hey Anuradha! I'm sorry...</h1> 
+            <p class="note">I wanted to do something special for you, so I made something special just for you.</p>
+            <button class="main-btn" onclick="openEnvelope()">Open My Heart ❤️</button>
+        </section>
+
+        <section id="love-letter-section" class="card" style="display: none;">
+            <div class="envelope-container">
+                <div class="envelope" onclick="openLoveLetter()">
+                    <div class="envelope-body"></div>
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-seal"></div>
+                    
+                    <div class="envelope-text-overlay">
+                        Click to open the envelope
+                        <span class="special-delivery">Special Delivery 💌</span>
+                    </div>
+                </div>
+                
+                <div class="letter-content" id="love-letter-text">
+                    <p>My dearest <span id="letter-recipient-name"></span>,</p>
+                    <p>
+                        <img src="assets/milk-and.gif" class="inline-letter-gif">
+                        Every moment with you feels like a beautiful dream that I never want to wake up from... 
+                        <img src="assets/dudu-bubu-love-gif.gif" class="inline-letter-gif">
+                    </p>
+                    <p class="signature">With all my love, Always yours</p>
+                    <button class="main-btn" onclick="showPlaylist()">Continue To See More ✨</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="playlist-section" class="card" style="display: none;">
+            <h2>🎵 A Dedicated Playlist For You</h2>
+            <div class="track-container">
+                <div class="track">
+                    <img src="assets/images (1).jpg" alt="Blue" class="track-art">
+                    <p>I'll imagine we fell in love </p>
+                    <audio id="track1" src="assets/Blue Yung Kai Mp3 Ringtone Download - MobCup.Com.Co.mp3"></audio> 
+                    <button class="play-btn" data-track="track1" onclick="togglePlay('track1', this)">▶️</button>
+                </div>
+                <div class="track">
+                    <img src="assets/images (2).jpg" alt="If the world was ending" class="track-art">
+                    <p>Wherever you go, that's where I'll follow</p>
+                    <audio id="track2" src="assets/Die With A Smile Song Ringtone Download Bruno Mars - MobCup.Com.Co.mp3"></audio> 
+                    <button class="play-btn" data-track="track2" onclick="togglePlay('track2', this)">▶️</button>
+                </div>
+                <div class="track">
+                    <img src="assets/images.png" alt="Dil Ka Jo Haal Hai" class="track-art">
+                    <p>
+How could this be anything,else?</p>
+                    <audio id="track3" src="assets/Lover Song Download Mp3 Pagalworld.mp3"></audio> 
+                    <button class="play-btn" data-track="track3" onclick="togglePlay('track3', this)">▶️</button>
+                </div>
+            </div>
+            <button class="main-btn" onclick="validateMusicAndShowCards()">Continue to Next ✨</button>
+        </section>
+
+        <section id="cards-section" class="card" style="display: none;">
+            <h2>💌 Some Special Cards For You</h2>
+            <p>Click each card to reveal a special message!</p>
+            <div class="cards-grid">
+                <div class="flip-card" onclick="flipCard(this, 0)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="assets/milk-and.gif"></div>
+                        <div class="flip-card-back">
+                            <p>I  Always want to dance with you like crazy💖</p>
+                            <span class="tap-label">Tap to flip back</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="flipCard(this, 1)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="assets/dudu-bubu-love-gif.gif"></div>
+                        <div class="flip-card-back">
+                            <p>You don’t even have to try—you just make everything around you feel lighter, warmer, better. 😊</p>
+                            <span class="tap-label">Tap to flip back</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card" onclick="flipCard(this, 2)">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front"><img src="assets/peach-goma-love-peach-cat.gif"></div>
+                        <div class="flip-card-back">
+                            <p>Can I go where you go? Can we always be this close forever and ever...?</p>
+                            <span class="tap-label">Tap to flip back</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cards-unlocked-message" style="display: none;">
+                <p>Amazing! You’ve discovered all the messages!</p>
+                <button class="main-btn" onclick="showFinalLetterPopup()">Open the Final Letter ✉️</button>
+            </div>
+        </section>
+
+        <div id="final-letter-popup" class="card " style="display: none;">
+    <div class="popup-content">
+        <h2>I'll make something that makes you feel special</h2>
+        <div class="final-letter-text">
+            <p class="signature">My sweetest <span id="final-letter-name"></span>,</p>
+            
+            <p>
+                <img src="assets/hulkenberg.gif" class="inline-letter-gif" alt="cute gif"> 
+                You're the calm I reach for and the laugh that brightens my day.
+            </p>
+            
+            <p>I hope this tiny world made you smile—and whispered how much you mean to me.</p>
+            
+            <p>
+                I'll keep making memories, big and small, always with you. Forever yours, in every little universe.
+                 <img src="assets/bubu-dudu-sseeyall.gif" class="inline-letter-gif" alt="cute gif">
+            </p>
+        </div>
+        <button class="main-btn" onclick="sealLetter()">Seal This Letter ❤️</button>
+        <small id="sealing-message" style="display: none;">Sealing will finish the experience.</small>
+    </div>
+</div>
+
+        <section id="sealed-letter-section" class="card" style="display: none;">
+            <h2>Letter Sealed with Love</h2>
+            <p>I Love You Always</p>
+            <p class="signature"><img src="assets/bubu-dudu-sseeyall.gif" class="inline-letter-gif1" alt="cute gif"> <span id="signed-name"></span> </p>
+            <button class="main-btn" onclick="sendVirtualKiss()">just tap for your surprise</button>
+            </section>
+        
+    </div>
+
+    <div id="kiss-overlay" class="popup-overlay" style="display: none; background-color: rgba(255, 192, 203, 0.95);">
+        
+        <div id="falling-heart-container" onclick="unlockSurprise()">
+            <div class="big-heart">❤️</div>
+            <p class="tap-unlock-text">Tap to Unlock</p>
+        </div>
+
+        <div id="surprise-reveal" style="display: none; text-align: center;">
+            <h1 id="reveal-name-text" style="color: #ff69b4; font-size: 2.5em;"></h1>
+            <img src="assetS/peach-goma-love-peach-cat.gif" alt="Teddy" style="width: 300px; border-radius: 20px;">
+            <br><br>
+            <button class="main-btn" onclick="window.location.reload()">Experience Again 🔄.</button>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
